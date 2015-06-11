@@ -2815,7 +2815,7 @@ sub save {
 		return $self->_snmpset('1.3.6.1.4.1.171.12.1.2.6.0', $t_integer, 3);
 	}
 	
-	if ($self->model eq "1.3.6.1.4.1.171.10.113.[36].1") {	# DES-3200/C1 series
+	if ($self->model =~ "1.3.6.1.4.1.171.10.113.[36].1") {	# DES-3200/C1 series
 		
 		if ($type eq 'cfg') {
 			$type = 2;
