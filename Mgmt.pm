@@ -180,6 +180,7 @@ Also, there is a limited support (ReadOnly) for next models:
 #
 my $OID_description = '1.3.6.1.2.1.1.1.0';
 my $OID_model = '1.3.6.1.2.1.1.2.0';
+my $OID_location = '1.3.6.1.2.1.1.6.0';
 my $OID_802dot1q_name = '1.3.6.1.2.1.17.7.1.4.3.1.1';
 my $OID_802dot1q_egress = '1.3.6.1.2.1.17.7.1.4.3.1.2';
 my $OID_802dot1q_forbidden = '1.3.6.1.2.1.17.7.1.4.3.1.3';
@@ -2863,6 +2864,17 @@ sub reboot {
 	
 	$self->_snmpset('1.3.6.1.4.1.171.12.1.2.19.0', $t_integer, 2);
 	return 'OK';
+}
+
+sub getLocation {
+	my $self = shift;
+	return $self->_snmpget($OID_location);
+}
+
+sub setLocation {
+	my $self = shift;
+	my $loc = shift;
+	return $self->_snmpset($OID_location, $t_octet, $loc);
 }
 
 sub _interval {
